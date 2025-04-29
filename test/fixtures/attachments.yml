@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  chat_session: one
+  file_url: MyString
+
+two:
+  chat_session: two
+  file_url: MyString
