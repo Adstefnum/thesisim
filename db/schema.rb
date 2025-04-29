@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_29_072724) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_29_072859) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -20,6 +20,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_29_072724) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["chat_session_id"], name: "index_attachments_on_chat_session_id"
+  end
+
+  create_table "chat_histories", force: :cascade do |t|
+    t.bigint "chat_session_id", null: false
+    t.text "content"
+    t.bigint "reply_to_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chat_session_id"], name: "index_chat_histories_on_chat_session_id"
+    t.index ["reply_to_id"], name: "index_chat_histories_on_reply_to_id"
   end
 
   create_table "chat_sessions", force: :cascade do |t|
@@ -38,5 +48,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_29_072724) do
   end
 
   add_foreign_key "attachments", "chat_sessions"
+  add_foreign_key "chat_histories", "chat_histories", column: "reply_to_id"
+  add_foreign_key "chat_histories", "chat_sessions"
   add_foreign_key "chat_sessions", "users"
 end

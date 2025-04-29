@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :chat_histories
   resources :attachments
   resources :chat_sessions
   resources :users

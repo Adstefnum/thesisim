@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Chat histories" %>
+
+<h1>Chat histories</h1>
+
+<div id="chat_histories">
+  <% @chat_histories.each do |chat_history| %>
+    <%= render chat_history %>
+    <p>
+      <%= link_to "Show this chat history", chat_history %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New chat history", new_chat_history_path %>
