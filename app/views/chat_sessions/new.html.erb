@@ -1,0 +1,11 @@
+<% content_for :title, "New chat session" %>
+
+<h1>New chat session</h1>
+
+<%= render "form", chat_session: @chat_session %>
+
+<br>
+
+<div>
+  <%= link_to "Back to chat sessions", chat_sessions_path %>
+</div>

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @chat_session %>
+
+<div>
+  <%= link_to "Edit this chat session", edit_chat_session_path(@chat_session) %> |
+  <%= link_to "Back to chat sessions", chat_sessions_path %>
+
+  <%= button_to "Destroy this chat session", @chat_session, method: :delete %>
+</div>
